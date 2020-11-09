@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, SimpleChanges  } from '@angular/core';
 import { LogService } from './shared/log.service.service';
 import { Login, SignUp } from './signup-and-login'
 
@@ -10,7 +10,6 @@ import { Login, SignUp } from './signup-and-login'
 })
 export class AppComponent {
 	showLoginForm: boolean; 
-	currentForm = new Login("","");;
 
 	constructor(private logger: LogService ) {}
 	
@@ -19,14 +18,12 @@ export class AppComponent {
 		this.showLoginForm = true;
 	}
 
+	ngOnChanges( changes:SimpleChanges  ) {
+		console.log( changes );
+	}
+
 	toggleLoginAndSignUp(){
 		this.showLoginForm = !this.showLoginForm;
-		
-		if ( this.showLoginForm == false ) { // register
-			this.currentForm = new SignUp("","","");
-		} else { // login
-			this.currentForm = new Login("","")
-		}
 	}
 
 	onSubmit( formType ) {

@@ -1,0 +1,35 @@
+<div id="login__page">
+    <div class="form">
+        <form class="login-form" (ngSubmit)="onSubmit(showLoginForm)" #loginForm="ngForm">
+            <div class="form-group">
+                <div *ngIf="username.invalid && (username.dirty || username.touched)" class="alert alert-danger">
+                    <div *ngIf="username.errors.required">
+                        Username is required.
+                    </div>
+                    <div *ngIf="username.errors.minlength">
+                        Username must be at least 6 characters long.
+                    </div>
+                </div>
+                <input type="text" [(ngModel)]="currentForm.username" #username="ngModel" name="username" minlength="6"
+                    required placeholder="Enter the username" />
+            </div>
+            <div class="form-group">
+                <input type="password" [(ngModel)]="currentForm.password" minlength="6" #password="ngModel"
+                    name="password" required placeholder="Enter the password" />
+                <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
+                    <div *ngIf="password.errors.required">
+                        Password is required.
+                    </div>
+                    <div *ngIf="password.errors.minlength">
+                        Password must be at least 6 characters long.
+                    </div>
+                </div>
+
+            </div>
+
+            <button type="submit" class="btn btn-success" [disabled]="!loginForm.form.valid">login</button>
+            <p class="message">Not registered? <a href="#" (click)="openSignUp()">Create an account</a>
+            </p>
+        </form>
+    </div>
+</div>
