@@ -1,7 +1,5 @@
-import { Component, SimpleChanges  } from '@angular/core';
+import { Component } from '@angular/core';
 import { LogService } from './shared/log.service.service';
-import { Login, SignUp } from './signup-and-login'
-
 
 @Component({
 	selector: 'app-root',
@@ -16,10 +14,6 @@ export class AppComponent {
 	// implement OnInit's `ngOnInit` method
 	ngOnInit() { 
 		this.showLoginForm = true;
-	}
-
-	ngOnChanges( changes:SimpleChanges  ) {
-		console.log( changes );
 	}
 
 	toggleLoginAndSignUp(){
