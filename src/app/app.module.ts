@@ -5,12 +5,15 @@ import { CommonModule } from '@angular/common';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { LoginComponent } from './login/login.component';
 
 // 1. Import the libs you need
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { SignUpComponent } from './sign-up/sign-up.component';
+
 
 
 // 2. Add your credentials from step 1
@@ -28,7 +31,9 @@ const config = {
 
 @NgModule({
 	declarations: [
-		AppComponent
+		AppComponent,
+		LoginComponent,
+		SignUpComponent
 	],
 	imports: [
 		CommonModule,
