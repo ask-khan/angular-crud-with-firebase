@@ -19,8 +19,4 @@ export class AppComponent {
 	toggleLoginAndSignUp(){
 		this.showLoginForm = !this.showLoginForm;
 	}
-
-	onSubmit( formType ) {
-		console.log('On submit' + formType );
-	}
 }
