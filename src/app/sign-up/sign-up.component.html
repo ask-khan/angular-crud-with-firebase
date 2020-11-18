@@ -2,39 +2,45 @@
     <div class="form">
         <form (ngSubmit)="onSubmit(showLoginForm)" class="register-form" #heroForm="ngForm">
             <div class="form-group">
-                <div *ngIf="username.invalid && (username.dirty || username.touched)" class="alert alert-danger">
-                    <div *ngIf="username.errors.required">
-                        Username is required.
-                    </div>
-                    <div *ngIf="username.errors.minlength">
-                        Username must be at least 6 characters long.
-                    </div>
-                </div>
-                <input type="text" [(ngModel)]="currentForm.username" minlength="6" #username="ngModel" name="username"
+                <input type="text" 
+                    class="form-control" 
+                    [(ngModel)]="currentForm.username" 
+                    minlength="6" 
+                    #username="ngModel" 
+                    name="username"
+                    [ngClass]="{
+                        'is-invalid':username.invalid && username.dirty,
+                        'has-success':username.valid && username.dirty
+                    }"
                     required placeholder="Enter the username" />
             </div>
             <div class="form-group">
-                <input type="password" [(ngModel)]="currentForm.password" minlength="6" #password="ngModel"
-                    name="password" required placeholder="Enter the password" />
-                <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
-                    <div *ngIf="password.errors.required">
-                        Password is required.
-                    </div>
-                    <div *ngIf="password.errors.minlength">
-                        Password must be at least 6 characters long.
-                    </div>
-                </div>
+                <input type="password" 
+                    class="form-control" 
+                    [(ngModel)]="currentForm.password" 
+                    minlength="6" 
+                    #password="ngModel"
+                    name="password" 
+                    required placeholder="Enter the password" 
+                    [ngClass]="{
+                        'is-invalid':password.invalid && password.dirty,
+                        'has-success':password.valid && password.dirty
+                    }"
+                />
             </div>
-            <div class="form-group">
-                <input type="text" [(ngModel)]="currentForm.emailaddress" #emailaddress="ngModel" name="emailaddress"
-                    required placeholder="Enter email address" email />
-                <div *ngIf="emailaddress.invalid && (emailaddress.dirty || emailaddress.touched)"
-                    class="alert alert-danger">
-                    <div *ngIf="emailaddress.errors.required">
-                        emailaddress is required.
-                    </div>
-                    <div *ngIf="emailaddress.errors.email">Email must be a valid email address</div>
-                </div>
+           
+            <div class="form-group" >
+                <input type="text" 
+                    class="form-control" 
+                    [(ngModel)]="currentForm.emailaddress" 
+                    #emailaddress="ngModel" name="emailaddress"
+                    required 
+                    placeholder="Enter email address" 
+                    [ngClass]="{
+                        'is-invalid':emailaddress.invalid && emailaddress.dirty,
+                        'has-success':emailaddress.valid && emailaddress.dirty
+                    }" email 
+                />
             </div>
             <button type="submit" class="btn btn-success" [disabled]="!heroForm.form.valid">Create</button>
             <p class="message">Already registered? <a href="" (click)="openLogin()">Sign Up</a></p>
