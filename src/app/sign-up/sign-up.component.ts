@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Login, SignUp } from './../signup-and-login';
+import { AuthService } from './../auth.service';
 
 @Component({
 	selector: 'app-sign-up',
@@ -10,7 +11,8 @@ export class SignUpComponent {
 	currentForm = new SignUp("", "", "");
 	@Output()
 	toggleLoginAndSignUp = new EventEmitter<string>();
-	constructor() { }
+	
+	constructor( public authService: AuthService ) { }
 
 	ngOnInit(): void {
 
@@ -21,7 +23,12 @@ export class SignUpComponent {
 	}
 	
 	onSubmit(formType) {
+		console.log( this.currentForm );
 		console.log('On submit' + formType);
+		//{username: "asasdasd", password: "1111111", emailaddress: "ahmedsaboorkhannu@gmail.com"}
+
+		this.authService.signup(this.currentForm.emailaddress, this.currentForm.password);
+    	this.currentForm = new SignUp("", "", "");
 	}
 
 }
